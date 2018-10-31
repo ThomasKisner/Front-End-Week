@@ -6,16 +6,18 @@ import ModalExample from "./modal";
 const SingleNoteContainer = styled.div`
   width: 100%;
   min-height: 100vh;
-
+background-color: #373940;
   height: 100%;
 `;
 
 const EditDeleteDiv = styled.div`
   margin-top: 20px;
-  margin-left: 80%;
+  margin-left: 65%;
+  
 `;
 
 const EditDeleteButton = styled.h4`
+color: #ffffff;
 padding-top: 15px
 text-decoration-line: underline;
 display: inline;
@@ -28,10 +30,12 @@ margin: 0 7%;
 const NoteTitle = styled.h2`
   margin-left: 3%;
   margin-bottom: 35px;
+  color: #ffffff
 `;
 
 const NoteText = styled.p`
   margin-left: 3%;
+  color: #ffffff;
 `;
 
 class IndividualNote extends Component {
@@ -45,16 +49,15 @@ class IndividualNote extends Component {
 
   componentDidMount() {
     const noteID = this.props.match.params.id;
-    
-    this.setState({id: noteID});
-    this.getNote(noteID); 
+
+    this.setState({ id: noteID });
+    this.getNote(noteID);
   }
 
   getNote = noteID => {
     axios
-      .get(`http://localhost:9000/notes/${noteID}`)
+      .get(`https://backendprojectserver.herokuapp.com/notes/${noteID}`)
       .then(response => {
-
         console.log(response);
         this.setState({
           title: response.data[0].title,
@@ -66,19 +69,37 @@ class IndividualNote extends Component {
       .catch(err => {
         console.log(err);
       });
-      
   };
 
-  toEdit= () => {
+  cloneNote = () => {
+    const clonedNote = {
+      title: this.state.title,
+      contents: this.state.contents
+    };
+
+    axios
+      .post("https://backendprojectserver.herokuapp.com/notes", clonedNote)
+      .then(response => {
+        console.log(response);
+        this.setState = { title: "", contents: "", id: "" };
+        this.props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  toEdit = () => {
     const noteID = this.props.match.params.id;
-    this.props.history.push(`/edit/${noteID}`)}
+    this.props.history.push(`/edit/${noteID}`);
+  };
 
   delete = () => {
-    console.log(this.state.id)
+    console.log(this.state.id);
     const noteID = this.state.id;
 
     axios
-      .delete(`http://localhost:9000/notes/${noteID}`)
+      .delete(`https://backendprojectserver.herokuapp.com/notes/${noteID}`)
       .then(response => {
         console.log(response);
         this.setState(
@@ -98,11 +119,11 @@ class IndividualNote extends Component {
       <SingleNoteContainer>
         <EditDeleteDiv>
           <EditDeleteButton onClick={this.toEdit}>edit</EditDeleteButton>
-          <ModalExample  {...this.props}   id={this.state.id}/>
-        </EditDeleteDiv >
+          <EditDeleteButton onClick={this.cloneNote}>clone</EditDeleteButton>
+          <ModalExample {...this.props} id={this.state.id} />
+        </EditDeleteDiv>
         <NoteTitle>{this.state.title}</NoteTitle>
         <NoteText>{this.state.contents}</NoteText>
-        
       </SingleNoteContainer>
     );
   }

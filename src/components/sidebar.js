@@ -6,13 +6,13 @@ const SideBarContainer = styled.div`
   width: 20%;
   min-height: 100vh;
   height: auto;
-  background-color: #D2D1D2;
+  background-color: #25272E;
   text-align: left;
   padding-left: 2%;
 `;
 
 const SideBarH3 = styled.h3`
-  background-color: #00BCBA;
+  background-color: #4BDBF7;
   color: #FFFFFF;
   height: auto;
   width: 90%;
@@ -36,6 +36,7 @@ font-size: 2em;
 -webkit-margin-start: 0px;
 -webkit-margin-end: 0px;
 font-weight: bold;
+color: #ffffff;
 
 `;
 

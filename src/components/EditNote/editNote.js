@@ -8,9 +8,11 @@ min-height: 100vh;
 height: 100%;
 display: flex; 
 flex-direction: column;
+background-color: #373940;
 `;
 
 const EditNoteTitle = styled.h2`
+color: #ffffff;
 margin-left: 3%;
 margin-top: 50px;
 `;
@@ -70,7 +72,7 @@ class EditNote extends Component {
 
   getNote = (noteID) => {
     axios
-      .get(`http://localhost:9000/notes/${noteID}`)
+      .get(`https://backendprojectserver.herokuapp.com/notes/${noteID}`)
       .then(response => {
         this.setState({
           title: response.data[0].title,
@@ -91,7 +93,7 @@ class EditNote extends Component {
       id: this.state.id
     };
     axios
-      .put(`http://localhost:9000/notes/${this.state.id}`, updatedNote)
+      .put(`https://backendprojectserver.herokuapp.com/notes/${this.state.id}`, updatedNote)
       .then(response => {
         console.log(response.data, updatedNote);
       })

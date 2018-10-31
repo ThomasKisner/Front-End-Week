@@ -6,8 +6,6 @@ import { AddNote } from "../components/AddNote/addNote";
 import { Route } from "react-router-dom";
 import SingleNoteHolder from '../components/SingleNote/SingleNoteHolder';
 import EditNoteHolder from '../components/EditNote/editNoteHolder'
-import NoteSearchHolder from '../components/NoteSearch/noteSearchHolder';
-
 class App extends Component {
   state = {
     notes: [],
@@ -15,9 +13,8 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:9000/notes`)
-      .then(response => {
-        console.log(response);
+      .get(`https://backendprojectserver.herokuapp.com/notes`)
+      .then(response => { 
         this.setState({ notes: response.data });
       })
       .catch(err => {
@@ -27,7 +24,7 @@ class App extends Component {
 
   componentDidUpdate(){
     axios
-    .get(`http://localhost:9000/notes`)
+    .get(`https://backendprojectserver.herokuapp.com/notes`)
     .then(response => {
       this.setState({ notes: response.data });
     })
@@ -43,7 +40,7 @@ class App extends Component {
         <Route
           exact
           path="/"
-          render={props => <ListViewHolder {...props} notes={this.state.notes} />}
+          render={props => <ListViewHolder {...props} allNotes={this.state.notes} />}
         />
         <Route path="/addnote" render={props=> <AddNote  {...props}/>}/>
         <Route
@@ -54,11 +51,7 @@ class App extends Component {
           path="/edit/:id" 
           render={props=> <EditNoteHolder {...props} notes={this.state.notes} />}
           />
-             <Route
-          path="/search" 
-          render={props=> <NoteSearchHolder {...props} notes={this.state.notes} />}
-          />
-       
+        
       </div>
     );
   }

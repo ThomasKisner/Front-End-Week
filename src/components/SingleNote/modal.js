@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 
 const EditDeleteButton = styled.h4`
+color: #ffffff;
 padding-top: 15px
 text-decoration-line: underline;
 display: inline;

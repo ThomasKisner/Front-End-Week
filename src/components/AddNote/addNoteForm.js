@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-
 const NewNoteContainer = styled.div`
+background-color: #373940;
 display: flex;
 flex-direction: column;
 justify-content: flex-start
@@ -15,8 +15,9 @@ margin: 0 auto;
 `;
 
 const NewNoteH1 = styled.h1`
-margin-left: 3%;
-margin-top: 50px;
+color:#ffffff;
+  margin-left: 3%;
+  margin-top: 50px;
 `;
 
 const TitleInput = styled.input`
@@ -42,8 +43,8 @@ height: 275px;
 `;
 
 const SaveButton = styled.h3`
-  background-color: #00BCBA;
-  color: #FFFFFF;
+  background-color: #00bcba;
+  color: #ffffff;
   height: auto;
   width: 18%;
   display: inline-block;
@@ -51,7 +52,7 @@ const SaveButton = styled.h3`
   text-align: center;
   margin-left: 3%;
   border-radius: 5px;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 `;
@@ -66,10 +67,15 @@ class AddNoteForm extends Component {
     const newNote = { title: this.state.title, contents: this.state.contents };
 
     axios
-      .post(`http://localhost:9000/notes`, newNote)
+      .post(`https://backendprojectserver.herokuapp.com/notes`, newNote)
       .then(response => {
-        this.setState({ title: "",
-        text: ""}, () => this.props.history.push("/"));
+        this.setState(
+          {
+            title: "",
+            text: ""
+          },
+          () => this.props.history.push("/")
+        );
       })
       .catch(err => {
         console.log(err.message);
@@ -95,8 +101,8 @@ class AddNoteForm extends Component {
           type="textarea"
           placeholder="Note Content"
           name="contents"
-          onChange={this.handleInput}>
-        </ TextInput>
+          onChange={this.handleInput}
+        />
         <SaveButton onClick={this.handleSave}>Save</SaveButton>
       </NewNoteContainer>
     );
