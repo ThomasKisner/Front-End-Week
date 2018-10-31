@@ -34,7 +34,7 @@ class ModalExample extends React.Component {
     console.log(`the id is ${this.props.id}`);
     
     axios
-      .delete(`http://localhost:9000/notes/${this.props.id}`)
+      .delete(`https://backendprojectserver.herokuapp.com/notes/${this.props.id}`)
       .then(response => {
         console.log(response);
         this.setState(

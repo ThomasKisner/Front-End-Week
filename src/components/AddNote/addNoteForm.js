@@ -10,7 +10,7 @@ justify-content: flex-start
 
 min-height: 100vh;
 height:100%;
-width: 90%;
+width: 100%;;
 margin: 0 auto;
 `;
 
@@ -37,8 +37,8 @@ margin: 10px 0;
 margin-left: 3%;
 height: 275px;
 ::placeholder{
-  padding-left: 5%;
-  padding-top:3%;
+  padding-left: 1%;
+  padding-top:1%;
  } 
 `;
 

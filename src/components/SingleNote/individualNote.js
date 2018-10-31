@@ -4,16 +4,15 @@ import styled from "styled-components";
 import ModalExample from "./modal";
 
 const SingleNoteContainer = styled.div`
-  width: 100%;
+width: 100%;
   min-height: 100vh;
-background-color: #373940;
+  background-color: #373940;
   height: 100%;
 `;
 
 const EditDeleteDiv = styled.div`
   margin-top: 20px;
   margin-left: 65%;
-  
 `;
 
 const EditDeleteButton = styled.h4`
@@ -27,15 +26,33 @@ margin: 0 7%;
 }
 `;
 
+const SingleNoteDiv = styled.div`
+  height: auto;
+  width: 90%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 5px;
+`;
 const NoteTitle = styled.h2`
-  margin-left: 3%;
-  margin-bottom: 35px;
-  color: #ffffff
+ padding-top:10px;
+ margin-left: 1%;
+ margin-right: 1%;
+  border-bottom: 1px solid #d0d0d0;
+  margin-top: 30px;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 5px;
+  padding-left: 5px;
+  border-bottom: ;
 `;
 
 const NoteText = styled.p`
-  margin-left: 3%;
-  color: #ffffff;
+  margin-left: 1%;
+  padding-bottom: 10px;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 5px;
+  padding-left: 5px;
 `;
 
 class IndividualNote extends Component {
@@ -122,8 +139,10 @@ class IndividualNote extends Component {
           <EditDeleteButton onClick={this.cloneNote}>clone</EditDeleteButton>
           <ModalExample {...this.props} id={this.state.id} />
         </EditDeleteDiv>
-        <NoteTitle>{this.state.title}</NoteTitle>
-        <NoteText>{this.state.contents}</NoteText>
+        <SingleNoteDiv>
+          <NoteTitle>{this.state.title}</NoteTitle>
+          <NoteText>{this.state.contents}</NoteText>
+        </SingleNoteDiv>
       </SingleNoteContainer>
     );
   }

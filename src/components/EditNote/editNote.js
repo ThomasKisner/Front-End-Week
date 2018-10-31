@@ -35,8 +35,8 @@ margin: 10px 0;
 margin-left: 3%;
 height: 275px;
 ::placeholder{
-  padding-left: 5%;
-  padding-top:3%;
+  padding-left: 1%;
+  padding-top:1%;
  } 
 `;
 
