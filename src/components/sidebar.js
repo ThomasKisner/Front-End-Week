@@ -40,7 +40,16 @@ color: #ffffff;
 
 `;
 
+
+
 const SideBar = () => {
+
+  const logout =() => {
+    // Clear Access Token and ID Token from local storage
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("expires_at");
+    window.location.reload();
+  }
   return(
   <SideBarContainer>
     <SideBarH1>Lambda<br></br> School</SideBarH1>
@@ -51,8 +60,12 @@ const SideBar = () => {
     <Link to='/addnote'>
     <SideBarH3>+ Create New Note</SideBarH3>
     </Link>
+
+    <SideBarH3 onClick={logout}>Logout</SideBarH3>
   </SideBarContainer>
   )
 };
+
+
 
 export default SideBar;
