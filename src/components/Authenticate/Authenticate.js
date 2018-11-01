@@ -3,16 +3,12 @@ import Login from "./login";
 
 const Authenticate = App =>
   class extends React.Component {
-      constructor(props){
-          super(props)
-      
-    this.state = {
+    state = {
       loggedIn: false
     };
-}
 
     componentDidMount() {
-      if (!localStorage.getItem("user")) {
+      if (!localStorage.getItem('access_token')) {
         this.setState({ loggedIn: false });
       } else {
         this.setState({ loggedIn: true });
@@ -21,7 +17,7 @@ const Authenticate = App =>
 
     render() {
       if (this.state.loggedIn) return <App />;
-      return Login;
+      return <Login />;
     }
   };
 

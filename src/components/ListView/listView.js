@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+
 const NotesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -100,26 +101,24 @@ const SideBarH3 = styled.h3`
 }
 `;
 
-//pagination has been started. Needs to be finished
-
 class ListView extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-  this.state = {
-    notes: [],
-    searchTerm: "",
-    filteredArray: []
-  };
-}
+    this.state = {
+      notes: [],
+      searchTerm: "",
+      filteredArray: []
+    };
+  }
 
   componentWillMount() {
-    console.log(this.props.allNotes)
+    console.log(this.props.allNotes);
     this.initialState();
   }
 
   initialState = () => {
-    console.log('inside of CDM');
-   
+    console.log("inside of CDM");
+
     this.setState(
       {
         notes: this.props.allNotes
@@ -135,10 +134,10 @@ class ListView extends Component {
   };
 
   searchNotes = () => {
-console.log('inside of called function')
-console.log(this.state.notes)
+    console.log("inside of called function");
+    console.log(this.state.notes);
     console.log(this.props);
-    console.log(this.props.allNotes)
+    console.log(this.props.allNotes);
     // console.log(this.state.notes);
     // const notes = this.props.AllNotes.filter(note =>
     //   note.contents.includes("this.state.searchTerm")
@@ -153,6 +152,7 @@ console.log(this.state.notes)
       <NotesContainer>
         <SearchBarDiv>
           <NotesContainerH2>Your Notes: </NotesContainerH2>
+         
           <SearchInput
             placeholder={"...search notes"}
             name="title"
@@ -180,7 +180,7 @@ console.log(this.state.notes)
       </NotesContainer>
     );
   }
+
 }
- 
 
 export default ListView;

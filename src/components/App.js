@@ -5,7 +5,9 @@ import ListViewHolder from "../components/ListView/listViewHolder";
 import { AddNote } from "../components/AddNote/addNote";
 import { Route } from "react-router-dom";
 import SingleNoteHolder from '../components/SingleNote/SingleNoteHolder';
-import EditNoteHolder from '../components/EditNote/editNoteHolder'
+import EditNoteHolder from '../components/EditNote/editNoteHolder';
+import Authenticate from './Authenticate/Authenticate';
+
 class App extends Component {
   state = {
     notes: [],
@@ -57,4 +59,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Authenticate(App);
